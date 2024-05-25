@@ -46,10 +46,9 @@
                   <div class="flex items-center gap-2 justify-between mt-3">
                     <p class="font-bold text-lg">R$ 34.90</p>
                     <button 
-                      class="bg-gray-800 py-1 px-2"
+                      class="bg-gray-800 py-1 px-2 add-to-cart-btn"
                       data-name="Hamburguer Smash"
-                      data-price="R$ 34.90"      
-                    >
+                      data-price="34.90">
                         <i class="fa fa-cart-plus text-lg text-white"></i>
                     </button>
                   </div>
@@ -70,7 +69,7 @@
                     <div class="flex items-center gap-2 justify-between mt-3">
                       <p class="font-bold text-lg">R$ 38.90</p>
                       <button 
-                        class="bg-gray-800 py-1 px-2"
+                        class="bg-gray-800 py-1 px-2 add-to-cart-btn"
                         data-name="Hamburguer duplo"
                         data-price="38.90"      
                       >
@@ -80,6 +79,7 @@
                   </div>
               </div>
               <!-- Fim Produto -->
+
               <!-- Inicio Produto -->
             <div class="flex gap-2">
                 <img 
@@ -93,7 +93,7 @@
                     <div class="flex items-center gap-2 justify-between mt-3">
                       <p class="font-bold text-lg">R$ 20.60</p>
                       <button 
-                        class="bg-gray-800 py-1 px-2"
+                        class="bg-gray-800 py-1 px-2 add-to-cart-btn"
                         data-name="Hamburguer Salad"
                         data-price="20.60"      
                       >
@@ -103,6 +103,7 @@
                   </div>
               </div>
               <!-- Fim Produto -->
+
               <!-- Inicio Produto -->
             <div class="flex gap-2">
                 <img 
@@ -116,7 +117,7 @@
                     <div class="flex items-center gap-2 justify-between mt-3">
                       <p class="font-bold text-lg">R$ 64.90</p>
                       <button 
-                        class="bg-gray-800 py-1 px-2"
+                        class="bg-gray-800 py-1 px-2 add-to-cart-btn"
                         data-name="Hamburguer da Casa"
                         data-price="64.90"      
                       >
@@ -145,13 +146,13 @@
                   class="w-28 h-28 rounded-md hover:scale-110 hover:rotate-2 duration-200"
                   >
                   <div>
-                      <p class="font-bold">Pepsi</p>
-                      <p class="text-sm">Refrigerante</p>
+                      <p class="font-bold">Coca-Cola</p>
+                      <p class="text-sm">Refrigerante lata 350 ml</p>
                     <div class="flex items-center gap-2 justify-between mt-3">
-                      <p class="font-bold text-lg">R$ 8.90</p>
+                      <p class="font-bold text-lg">R$ 4.50</p>
                       <button 
-                        class="bg-gray-800 py-1 px-2"
-                        data-name="Hamburguer Smash"
+                        class="bg-gray-800 py-1 px-2 add-to-cart-btn"
+                        data-name="Coca Cola lata 350 ml"
                         data-price="8.90"      
                       >
                           <i class="fa fa-cart-plus text-lg text-white"></i>
@@ -163,18 +164,18 @@
               <!-- Item Bebida -->
               <div class="flex gap-2">
                 <img 
-                  src="../assets/refri-1.png"
+                  src="../assets/refri-2.png"
                   alt=""
                   class="w-28 h-28 rounded-md hover:scale-110 hover:rotate-2 duration-200"
                   >
                   <div>
-                      <p class="font-bold">Coca-cola</p>
-                      <p class="text-sm">Refrigerante</p>
+                      <p class="font-bold">Guaraná Antartica</p>
+                      <p class="text-sm">Refrigerante lata 350 ml</p>
                     <div class="flex items-center gap-2 justify-between mt-3">
                       <p class="font-bold text-lg">R$ 12.90</p>
                       <button 
-                        class="bg-gray-800 py-1 px-2"
-                        data-name="Hamburguer Smash"
+                        class="bg-gray-800 py-1 px-2 add-to-cart-btn"
+                        data-name="Guarana Antartica lata 350 ml"
                         data-price="12.90"      
                       >
                           <i class="fa fa-cart-plus text-lg text-white"></i>
@@ -189,11 +190,12 @@
     <!-- Fim Menu -->
 
     <!-- Modal Cart -->
-    <div class="bg-black/60 w-full h-full fixed top-0 left-0 z-[99] flex items-center justify-center hidden">
+    <div class="bg-black/60 w-full h-full fixed top-0 left-0 z-[99] flex items-center justify-center hidden"
+    id="cart-modal">
         <div class="bg-white p-5 rounded-md min-w-[90%] md:min-w-[600px]">
-           <h2 class="text-center font-bold text-2xl mb-28">Meu carrinho</h2>
+           <h2 class="text-center font-bold text-2xl mb-19.9">Meu carrinho</h2>
           
-           <div id="cart-items" class="flex justify-between mb-2 md:min-w-[600px]"></div>
+           <div id="cart-items" class="flex justify-between mb-2 md:min-w-[600px] flex-col"></div>
           
            <p class="font-bold">Total: <span id="cart-total">0.00</span></p>
         
@@ -202,14 +204,14 @@
            <input 
            type="text"
            placeholder="Digite seu endereço completo..."
-           id="andress"
+           id="adress"
            class="w-full border-2 p-1 rounded my-1"
            >
            <p class="text-red-500 hidden" id="address-warn">Digite seu endereço completo</p>
 
            <div class="flex items-center justify-between mt-5 w-full">
             <button id="close-modal-btn">Fechar</button>
-            <button id="chackout-btn" class="bg-green-500 text-white px-4 py-1 rounded">Final</button>
+            <button id="checkout-btn" class="bg-green-500 text-white px-4 py-1 rounded">Finalizar</button>
            </div>
         </div>
     </div>
@@ -224,5 +226,6 @@
         </button>
     </footer>
     <!-- Fim Buttom Card -->
+    <script src="script.js"></script>
 </body>
 </html>
