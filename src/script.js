@@ -67,9 +67,6 @@ function updateCartModal (){
     cartItemsContainer.innerHTML = "";
     let total = 0;
 
-
-    
-    
     cart.forEach(item => {
         const cartItemElement = document.createElement("div");
 
@@ -82,7 +79,7 @@ function updateCartModal (){
                 </div>
             
                 <div>
-                    <button>
+                    <button class="remove-from-cart-btn" data-name="${item.name}">
                         Remover
                     <button>
                 </div>
@@ -93,6 +90,52 @@ function updateCartModal (){
         cartItemsContainer.appendChild(cartItemElement)
 
     })
-    cartTotal.textContent = total.toFixed(2);
+    cartTotal.textContent = total.toLocaleString("pt-br", {
+        style: "currency",
+        currency: "BRL"
+    });
+
+    cartCounter.innerHTML = cart.length;
 
 }
+
+// funcao para remover item do carrinho
+cartItemsContainer.addEventListener("click",function(event){
+    if(event.target.classList.contains("remove-from-cart-btn")){
+        const name = event.target.getAttribute("data-name")
+        
+        removeItemCart(name);
+    }
+})
+
+function removeItemCart (name){
+    const index = cart.findIndex(item => item.name === name);
+
+    if (index !== -1){
+        const item = cart[index];
+
+        if (item.quantity > 1){
+            item.quantity -= 1;
+            updateCartModal();
+            return;
+        }
+
+        cart.splice(index, 1);
+        updateCartModal();
+    }
+}
+
+addressInput.addEventListener("input", function(event){
+    let inputValue = event.target.value;
+
+    //
+})
+
+checkoutBtn.addEventListener("click", function(){
+    if (cart.length === 0) return;
+    if (addressInput.value === ""){
+        addressWarn.classList.remove("hidden")
+        addressInput.classList.add("border-red-500")
+        return;
+    }
+})
